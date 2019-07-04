@@ -7,15 +7,15 @@ import giphy from 'giphy-api';
 
 class App extends Component {
   constructor(props) {
-  	super(props);
+    super(props);
 
-  	this.state = {
-  		gifs: [],
-  		selectedGifId: "Z3hsLaqlVFdUk"
-  	};
+    this.state = {
+      gifs: [],
+      // selectedGifId: null
+    };
   }
 
-  search = (query) =>{
+  search = (query) => {
     giphy('b1ZBDBp6ykEXDPbz1ruQYdRDtVQN0OUU').search({
       q: query,
       rating: 'g',
@@ -24,6 +24,12 @@ class App extends Component {
       this.setState({
         gifs: res.data
       });
+    });
+  }
+
+  selectGif = (id) => {
+    this.setState({
+      selectedGifId: id
     });
   }
 
